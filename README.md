@@ -16,10 +16,14 @@
    ACCEPT the invite**.
 3. Fill out the table below
 
-| Student Name | Student Email | GitHub Username | Student's role |
-| :----------: | :-----------: | :-------------: | :------------: |
-|   John Doe   | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
-
+| Student Name  | Student Email | GitHub Username | Student's role |
+|:-------------:| :-----------: | :-------------: | :------------: |
+| Elliot Warren | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
+|   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
+|   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
+|   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
+|   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
+|   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
 **NO code should be stored in the root of your repository. You may rename the
 `application/` folder to your team's application name if you'd like, but all the
 source code should be stored inside that folder.**
