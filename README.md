@@ -19,7 +19,7 @@
 | Student Name  | Student Email | GitHub Username | Student's role |
 |:-------------:| :-----------: | :-------------: | :------------: |
 | Elliot Warren | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
-|   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
+|   Citlalin Galvan    | cgalvanhernandez@sfsu.edu |      CitlalinGalvan       |  Team Member   |
 |   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
 |   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
 |   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
