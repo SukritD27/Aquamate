@@ -21,7 +21,7 @@
 | Elliot Warren | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
 |   Citlalin Galvan    | cgalvanhernandez@sfsu.edu |      CitlalinGalvan       |  Team Member   |
 |   Miguelangel Vargas    | mvargas22@sfsu.edu |      mvargas831       |  Team Member   |
-|   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
+|   Sukrit Dev Dhawan    | sdhawan@sfsu.edu |      SukritD27       |  Back-end Lead   |
 |   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
 |   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
 **NO code should be stored in the root of your repository. You may rename the
