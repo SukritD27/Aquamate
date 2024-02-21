@@ -23,7 +23,7 @@
 | Miguelangel Vargas | mvargas22@sfsu.edu        | mvargas831      |  Team Member     |
 | Sukrit Dev Dhawan  | sdhawan@sfsu.edu          | SukritD27       |  Back-end Lead   |
 | Naing Htet         | nhet1@sfsu.edu            | Codingjackking  |  Front-end Lead  |
-|   John Doe         | jdoe@sfsu.edu             |      jdoe       |  Team Leader     |
+| Inderpaul Bhander  | ibhander@sfsu.edu         |Inderpaul-Bhander|  Scrum Master    |
 **NO code should be stored in the root of your repository. You may rename the
 `application/` folder to your team's application name if you'd like, but all the
 source code should be stored inside that folder.**
