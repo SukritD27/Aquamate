@@ -20,7 +20,7 @@
 |:-------------:| :-----------: | :-------------: | :------------: |
 | Elliot Warren | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
 |   Citlalin Galvan    | cgalvanhernandez@sfsu.edu |      CitlalinGalvan       |  Team Member   |
-|   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
+|   Miguelangel Vargas    | mvargas22@sfsu.edu |      mvargas831       |  Team Member   |
 |   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
 |   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
 |   John Doe    | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
