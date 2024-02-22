@@ -1,6 +1,6 @@
 # CSC648-SectionName-sp24-teamNum Repository
 
-**Application URL: <https://example.com>**
+**Application URL: <http://aquamate.me>**
 
 ## Before completing Milestone 0
 
@@ -24,7 +24,10 @@
 | Sukrit Dev Dhawan  | sdhawan@sfsu.edu          | SukritD27       |  Back-end Lead   |
 | Naing Htet         | nhet1@sfsu.edu            | Codingjackking  |  Front-end Lead  |
 | Inderpaul Bhander  | ibhander@sfsu.edu         |Inderpaul-Bhander|  Scrum Master    |
-| Mohammed Deeb      | mdeeb@sfsu.edu         | MohammedDeeb261 |  Git Master      |
+| Mohammed Deeb      | mdeeb@sfsu.edu            | MohammedDeeb261 |  Git Master      |
+
 **NO code should be stored in the root of your repository. You may rename the
 `application/` folder to your team's application name if you'd like, but all the
 source code should be stored inside that folder.**
+
+# as part of the run requirements, you must use a version of Ubuntu to clone the repository and generate any work within Ubuntu
