@@ -1,6 +1,6 @@
 # CSC648-SectionName-sp24-teamNum Repository
 
-**Application URL: <http://aquamate.me>**
+**Application URL: <https://aquamate.me>**
 
 ## Before completing Milestone 0
 
