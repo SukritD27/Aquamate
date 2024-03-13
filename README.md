@@ -22,7 +22,7 @@
 | Citlalin Galvan    | cgalvanhernandez@sfsu.edu | CitlalinGalvan  |  Team Member     |
 | Miguelangel Vargas | mvargas22@sfsu.edu        | mvargas831      |  Team Member     |
 | Sukrit Dev Dhawan  | sdhawan@sfsu.edu          | SukritD27       |  Back-end Lead   |
-| Naing Htet         | nhet1@sfsu.edu            | Codingjackking  |  Front-end Lead  |
+| Naing Htet         | nhtet1@sfsu.edu            | Codingjackking  |  Front-end Lead  |
 | Inderpaul Bhander  | ibhander@sfsu.edu         |Inderpaul-Bhander|  Scrum Master    |
 | Mohammed Deeb      | mdeeb@sfsu.edu            | MohammedDeeb261 |  Git Master      |
 
