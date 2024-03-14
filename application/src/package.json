@@ -1,0 +1,22 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "",
+  "main": "\u001b[D\u001b[D\u001b[D\u001bapp\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Dlication.js)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CSC-648-SFSU/csc648-04-sp24-Team03.git"
+  },
+  "author": "Team Tetra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CSC-648-SFSU/csc648-04-sp24-Team03/issues"
+  },
+  "homepage": "https://github.com/CSC-648-SFSU/csc648-04-sp24-Team03#readme",
+  "dependencies": {
+    "express": "^4.18.3"
+  }
+}
