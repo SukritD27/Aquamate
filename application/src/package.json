@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/CSC-648-SFSU/csc648-04-sp24-Team03#readme",
   "dependencies": {
-    "express": "^4.18.3"
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.2.2"
   }
 }
