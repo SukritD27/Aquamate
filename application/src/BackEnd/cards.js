@@ -24,15 +24,26 @@ router.get('/', async function(req, res, next) {
         const db = client.db("aquamatedb");
         const collection = db.collection('fauna');
 
-        const searchResults = await collection.find({ commonName: {$regex: search} });
-        // ${search}
-        if(await collection.countDocuments({ commonName: {$regex: search} }) === 0){
+        const searchResultsCursor = await collection.find({ $or : [{commonName: {$regex: search}}, {scientificName: {$regex: search}}] });
+        const searchResults = await searchResultsCursor.toArray();
+
+        if(await collection.countDocuments({ $or : [{commonName: {$regex: search}}, {scientificName: {$regex: search}}] }) === 0){
             console.log('search: ',search);
-            console.log("No Docs found.")
+            console.log("No Docs found.");
+
+            // returns everything if query found nothing
+            const resultsCursor = await collection.find({});
+            const results = await resultsCursor.toArray();
+            res.json(results);
+            for await (const doc of results) {
+                console.dir(doc);
+            }
         }else{
-            console.log('search: ',search);
+            console.log('searchFound: ',search);
             res.json(searchResults);
         }
+        // const doc = searchResults[0];
+        // console.dir(doc);
         for await (const doc of searchResults) {
             console.dir(doc);
         }
