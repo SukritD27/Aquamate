@@ -22,7 +22,7 @@ router.get('/', async function(req, res, next) {
     const search = new RegExp([x].join(""), "i");
     try {
         const db = client.db("aquamatedb");
-        const collection = db.collection('fauna');
+        const collection = db.collection('faunaPhotos');
 
         const searchResultsCursor = await collection.find({ $or : [{commonName: {$regex: search}}, {scientificName: {$regex: search}}] });
         const searchResults = await searchResultsCursor.toArray();
