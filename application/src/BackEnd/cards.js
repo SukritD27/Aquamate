@@ -4,17 +4,22 @@ const mongoose = require('mongoose');
 // const client = require('./config/database.js');
 const { MongoClient } = require('mongodb');
 const client = new MongoClient(process.env.DB_URI);
-const querystring = require('node:querystring');
+// const querystring = require('node:querystring');
+const { URLSearchParams } = require('url');
 
 // router.get('/', (req, res, next) => {
 //     res.json({ message: " passed" }); // Send the message in an object
 
 // });
 
-router.get('/search', async function(req, res, next) {
-    const searchString = req.query;
+router.get('/', async function(req, res, next) {
+    // const searchString = req.query;
+    const searchParams = new URLSearchParams(req.query);
+    const searchString = searchParams.toString();   
+    const parsedString = searchString.split("=");
     // const searchString = "B";
-        const search = new RegExp(searchString);
+    const x = parsedString[1];
+    const search = new RegExp(x);
     try {
         const db = client.db("aquamatedb");
         const collection = db.collection('fauna');
