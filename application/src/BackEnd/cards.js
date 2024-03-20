@@ -19,7 +19,7 @@ router.get('/', async function(req, res, next) {
     const parsedString = searchString.split("=");
     // const searchString = "B";
     const x = parsedString[1];
-    const search = new RegExp(x);
+    const search = new RegExp([x].join(""), "i");
     try {
         const db = client.db("aquamatedb");
         const collection = db.collection('fauna');
