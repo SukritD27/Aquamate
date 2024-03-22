@@ -1,0 +1,84 @@
+/* Hero section styles */
+.hero {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    /* background-image: url('../src/images/fish-tank.png'); Update this path */
+    background-size: cover;
+    background-position: center;
+    position: relative; /* To position the search bar and actions absolutely within */
+}
+
+/* Search bar styles */
+.search-bar {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+    border-radius: 50px;
+    padding: 20px;
+}
+
+.search-bar input[type="text"] {
+    border: none;
+    padding: 10px;
+    margin-right: 10px;
+    align-items: center;
+    font-size: 30px;
+}
+
+.search-bar button {
+    padding: 10px;
+    font-size: 30px;
+    background-color: #0056b3; /* Darker blue for contrast */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Actions styles */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increase the gap if needed */
+    position: absolute;
+    top: 30%; /* Center vertically */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the element */
+}
+
+.action {
+    background-color: #004c8c; /* A color that stands out against the background */
+    color: white;
+    padding: 30px; /* Increased padding for larger buttons */
+    border-radius: 10px;
+    width: 300px; /* Increased width for larger buttons */
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better visibility */
+}
+
+.action h2 {
+    margin: 0;
+    font-size: 1.5em; /* Larger font size for the text inside the buttons */
+}
+
+.action:hover {
+    transform: translateY(-5px); /* Slight raise effect on hover */
+}
+
+/* Call to action button */
+.cta-button {
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
