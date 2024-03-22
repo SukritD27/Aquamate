@@ -61,8 +61,11 @@ function HomePage() {
         <section id="search-results" className="search-results">
           {searchResults.map((result, index) => (
             <div>
+                <div>{index})</div>
+                <div key={index}>Commmon Name: {result.commonName}</div>
+                <div key={index}>Scientfic Name: {result.scientificName}</div>
                 <iframe src={result.photo} width="640" height="480" frameBorder="0" scrolling="no"></iframe>
-                <div key={index}>{result.commonName}</div>
+                
             </div>
           ))}
         </section>
