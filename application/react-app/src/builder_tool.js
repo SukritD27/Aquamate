@@ -1,45 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import './css/builder_tool.css'
-
+import SearchBar from './search_bar';
 const BuilderTool = () => {
-  // Tab Functions, get the active tab, hide the rest
+  
+  // Initializing states
   const [activeTab, setActiveTab] = useState('Fish');
-  const openCity = (cityName) => {
-    setActiveTab(cityName);
-  };
-
-  // ******************** FISH DATA connect to DATABASE ********************
-  const fishData = [
-    { id: 1, name: "Goldfish", imageUrl: "path-to-goldfish-image", tankSize: "30L", difficulty: "Easy", temperament: "Calm" },
-    { id: 2, name: "Neon Tetra", imageUrl: "path-to-neon-tetra-image", tankSize: "20L", difficulty: "Medium", temperament: "Active" },
-    { id: 3, name: "Koi", imageUrl: "path-to-koi-image", tankSize: "100L", difficulty: "Hard", temperament: "Active" },
-    // ... more fish data
-  ];
+  const [searchTerm, setSearchTerm] = useState('');
+  const [fishData, setFishData] = useState([]);
+  const [plantData, setPlantData] = useState([]);
+  const [tankData, setTankData] = useState([]);
   const [selectedFish, setSelectedFish] = useState(null);
-
-  // ******************** PLANT DATA connect to DATABASE ********************
-  const plantData = [
-    { id: 1, name: "Duckweed", imageUrl: "path-to-Duckweed-image", lightReq: "8hrs of light", growthRate: "Slow", fishCompability: "True" },
-    { id: 2, name: "Neon Tetra", imageUrl: "path-to-neon-tetra-image", lightReq: "8hrs of light", growthRate: "Fast", fishCompability: "False" },
-    // ... more fish data
-  ];
   const [selectedPlant, setSelectedPlant] = useState(null);
-
-  // ******************** TANK DATA connect to DATABASE ********************
-  const tankData = [
-    { id: 1, name: "5 Gallon", imageUrl: "path-to-5g-image", lenght: "12", width: "6", height: "8", weight: "7 lbs"},
-    { id: 2, name: "10 Gallon", imageUrl: "path-to-10g-image", lenght: "20", width: "10", height: "12", weight: "11 lbs"},
-    { id: 3, name: "20 Gallon", imageUrl: "path-to-20g-image", lenght: "24", width: "12", height: "16", weight: "25 lbs"},
-    // ... more fish data
-  ];
   const [selectedTank, setSelectedTank] = useState(null);
 
-  
+  const openCity = (cityName) => {
+    setActiveTab(cityName);
+    setSearchTerm(''); // Reset search term on tab change
+  };
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/search?search=${searchTerm}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        
+        // Use a map to hold the state setters for easier access
+        const setStateMap = {
+          'Fauna': setFishData,
+          'Flora': setPlantData,
+          'Tank': setTankData,
+        };
+
+        // Assuming 'Type' is correctly capitalized in your data, if not, adjust accordingly
+        Object.keys(setStateMap).forEach(type => {
+          const filteredData = data.filter(item => 
+            (item.Type === type || item.type === type) && (
+              item.commonName?.toLowerCase().includes(searchTerm.toLowerCase()) || 
+              item.scientificName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              item.size?.toString().toLowerCase().includes(searchTerm.toLowerCase())
+            )
+          );
+          setStateMap[type](filteredData);
+        });
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+      }
+    };
+
+    fetchData();
+  }, [searchTerm, activeTab]); // Dependency on both activeTab and searchTerm ensures data is refetched on change
+
+ 
+
   // Dummy function for handling filter changes
   const handleFilterChange = (filter) => {
     console.log('Filter changed to: ', filter);
     // Implement filter logic here
   };
+
+
+
 
   return (
     <>
@@ -65,8 +89,13 @@ const BuilderTool = () => {
                                 Tab Content 
       ************************************************************************/}
 
+      {/*SearchBar component */}
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
+
       {/* ===================== FISH TAB ===================== */}
       <div id="Fish" className={`tabcontent ${activeTab === 'Fish' ? 'active' : ''}`}>
+        
         <aside className="filter-sidebar">
           <h2>Filters</h2>
           {/* Add your filter options here */}
@@ -74,16 +103,16 @@ const BuilderTool = () => {
           <button onClick={() => handleFilterChange('hard')}>Hard</button>
           {/* ... more filters */}
         </aside>
-
+      
         <div className="grid">
           {fishData.map((fish) => (
             <div key={fish.id} className="card" onClick={() => setSelectedFish(fish)}>
               <img src={fish.imageUrl} alt={fish.name} />
               <div className="fish-info">
-                <h3>{fish.name}</h3>
-                <p>Tank Size Req: {fish.tankSize}</p>
+                <h3>{fish.commonName}</h3>
+                <p>Tank Size Req: {fish.minTankSize}</p>
                 <p>Difficulty: {fish.difficulty}</p>
-                <p>Temperament: {fish.temperament}</p>
+                <p>Aggressive with: {fish.aggressive}</p>
                 <button className="info-button">Get more Info</button>
               </div>
             </div>
@@ -92,6 +121,8 @@ const BuilderTool = () => {
       </div>
       
       {/* ===================== PLANTS TAB ===================== */}
+      
+      
       <div id="Plants" className={`tabcontent ${activeTab === 'Plants' ? 'active' : ''}`}>
         <aside className="filter-sidebar">
           <h2>Filters</h2>
@@ -106,10 +137,10 @@ const BuilderTool = () => {
             <div key={plant.id} className="card" onClick={() => setSelectedPlant(plant)}>
               <img src={plant.imageUrl} alt={plant.name} />
               <div className="info">
-                <h3>{plant.name}</h3>
-                <p>Light Req: {plant.tankSize}</p>
-                <p>Growth Rate: {plant.difficulty}</p>
-                <p>Fish Compability: {plant.temperament}</p>
+                <h3>{plant.commonName}</h3>
+                <p>Light Req: {plant.lightRequirement}</p>
+                <p>Growth Rate: {plant.growthRate}</p>
+                <p>Difficulty: {plant.difficulty}</p>
                 <button className="info-button">Get more Info</button>
               </div>
             </div>
@@ -132,11 +163,9 @@ const BuilderTool = () => {
             <div key={tank.id} className="card" onClick={() => setSelectedTank(tank)}>
               <img src={tank.imageUrl} alt={tank.name} />
               <div className="info">
-                <h3>{tank.name}</h3>
-                <p>Length {tank.lenght}</p>
-                <p>Width: {tank.width}</p>
-                <p>Height: {tank.height}</p>
-                <p>Weight: {tank.weight}</p>
+                <p>Size: {tank.size}</p>
+                <p>Shape: {tank.shape}</p>
+                
                 <button className="info-button">Get more Info</button>
               </div>
             </div>
@@ -144,58 +173,6 @@ const BuilderTool = () => {
         </div>
       </div>
 
-      {/* ===================== FAVORITES TAB ===================== */}
-      <div id="Favorites" className={`tabcontent ${activeTab === 'Favorites' ? 'active' : ''}`}>
-      
-      {/* Fish Section */}
-      <div className="fish-list">
-          {fishData.map((fish) => (
-            <div key={fish.id} className="card" onClick={() => setSelectedFish(fish)}>
-              <img src={fish.imageUrl} alt={fish.name} />
-              <div className="fish-info">
-                <h3>{fish.name}</h3>
-                <p>Tank Size Req: {fish.tankSize}</p>
-                <p>Difficulty: {fish.difficulty}</p>
-                <p>Temperament: {fish.temperament}</p>
-                <button className="info-button">Get more Info</button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-      {/* Plants Section */}
-      <div className="plant-list">
-          {plantData.map((plant) => (
-            <div key={plant.id} className="card" onClick={() => setSelectedPlant(plant)}>
-              <img src={plant.imageUrl} alt={plant.name} />
-              <div className="plant-info">
-                <h3>{plant.name}</h3>
-                <p>Light Req: {plant.tankSize}</p>
-                <p>Growth Rate: {plant.difficulty}</p>
-                <p>Fish Compability: {plant.temperament}</p>
-                <button className="info-button">Get more Info</button>
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* Tanks Section */}
-        <div className="tank-list">
-          {tankData.map((tank) => (
-            <div key={tank.id} className="card" onClick={() => setSelectedTank(tank)}>
-              <img src={tank.imageUrl} alt={tank.name} />
-              <div className="tank-info">
-                <h3>{tank.name}</h3>
-                <p>Length {tank.lenght}</p>
-                <p>Width: {tank.width}</p>
-                <p>Height: {tank.height}</p>
-                <p>Weight: {tank.weight}</p>
-                <button className="info-button">Get more Info</button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* ***********************************************************************
                                 BUILD SECTION 
@@ -204,5 +181,6 @@ const BuilderTool = () => {
     </>
   );
 };
+
 
 export default BuilderTool;
