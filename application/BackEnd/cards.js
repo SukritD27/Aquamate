@@ -22,18 +22,36 @@ router.get('/', async function(req, res, next) {
     const search = new RegExp([x].join(""), "i");
     try {
         const db = client.db("aquamatedb");
-        const collection = db.collection('faunaPhotos');
+        const collectionFauna = db.collection('fauna');
 
-        const searchResultsCursor = await collection.find({ $or : [{commonName: {$regex: search}}, {scientificName: {$regex: search}}] });
-        const searchResults = await searchResultsCursor.toArray();
+        const searchResultsCursorFauna = await collectionFauna.find({ $or : [{commonName: {$regex: search}}, {scientificName: {$regex: search}}] });
+        const searchResultsFauna = await searchResultsCursorFauna.toArray();
 
-        if(await collection.countDocuments({ $or : [{commonName: {$regex: search}}, {scientificName: {$regex: search}}] }) === 0){
+        const collectionFlora = db.collection('flora');
+
+        const searchResultsCursorFlora = await collectionFlora.find({ $or : [{commonName: {$regex: search}}, {scientificName: {$regex: search}}] });
+        const searchResultsFlora = await searchResultsCursorFlora.toArray();
+
+        const collectionTank = db.collection('tank');
+
+        const searchResultsCursorTank = await collectionTank.find({shape: {$regex: search}});
+        const searchResultsTank = await searchResultsCursorTank.toArray();
+
+        const searchResults = searchResultsFauna.concat(searchResultsFlora, searchResultsTank);
+
+        //if(await collection.countDocuments({ $or : [{commonName: {$regex: search}}, {scientificName: {$regex: search}}] }) === 0){
+        if(searchResults.length == 0){
             console.log('search: ',search);
             console.log("No Docs found.");
 
             // returns everything if query found nothing
-            const resultsCursor = await collection.find({});
-            const results = await resultsCursor.toArray();
+            const resultsCursorFauna = await collectionFauna.find({});
+            const resultsCursorFlora = await collectionFlora.find({});
+            const resultsCursorTank = await collectionTank.find({});
+            const resultsFauna = await resultsCursorFauna.toArray();
+            const resultsFlora = await resultsCursorFlora.toArray();
+            const resultsTank = await resultsCursorTank.toArray();
+            const results =  resultsFauna.concat(resultsFlora, resultsTank);
             res.json(results);
             for await (const doc of results) {
                 console.dir(doc);
