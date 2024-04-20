@@ -1,81 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from './home.js';
+import GalleryPage from './gallery';
+import InfoPage from './InfoPage';
+import BuilderTool from './builder_tool';
+import './home.css';
+import './header.css';
+import './builder_tool.css';
+import './gallery.css';
 
-function HomePage() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+function App() {
+    const [message, setMessage] = useState('loading');
 
-  const handleSearch = () => {
-    const url = `http://localhost:8080/search?search=${encodeURIComponent(searchTerm)}`;
+    useEffect(() => {
+        fetch('https://aquamate.me/test')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => setMessage(data.message))
+            .catch(err => {
+                console.error("Failed to fetch data from backend:", err);
+                setMessage("Failed to connect to the backend.");
+            });
+    }, []);
 
-    fetch(url)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        setSearchResults(data);
-      })
-      .catch(error => {
-        console.error('Error fetching search results:', error);
-        console.log(searchTerm);
-        console.log(searchResults);
-      });
-  };
-
-  return (
-    <div>
-      <header className="header">
-        <h1>AquaMate</h1>
-        <nav>
-          <ul>
-            <li><a href="../html/About/about.html">About Us</a></li>
-            <li><a href="../html/Tank Builder/builder.html">Tank Builder</a></li>
-            <li><a href="../html/Gallery/gallery.html">Gallery</a></li>
-            <li><a href="#">Plant Profiles</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </nav>
-      </header>
-
-      <main>
-        <section id="home" className="hero">
-          <h1>Welcome to Our Aquarium World</h1>
-          <p>Discover the beauty of aquatic life and create your own underwater paradise.</p>
-          <div className="search-bar">
-            <input type="text" id="searchInput" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} placeholder="Search..." />
-            <button type="button" id="searchButton" onClick={handleSearch}>🔍</button>
-          </div>
-          <div className="actions">
-            <div className="action" id="build-aquarium">
-              <h2>Build an Aquarium</h2>
+    return (
+        <div>
+            <div className="App">
+                <p>Backend: {message}</p>
             </div>
-            <div className="action" id="view-gallery">
-              <h2>View Gallery</h2>
-            </div>
-          </div>
-        </section>
 
-        <section id="search-results" className="search-results">
-          {searchResults.map((result, index) => (
-            <div>
-                <div>{index})</div>
-                <div key={index}>Commmon Name: {result.commonName}</div>
-                <div key={index}>Scientfic Name: {result.scientificName}</div>
-                <iframe src={result.photo} width="640" height="480" frameBorder="0" scrolling="no"></iframe>
-                
-            </div>
-          ))}
-        </section>
-      </main>
-
-      <footer>
-        <p>&copy; 2024 Aquarium Website. All rights reserved.</p>
-      </footer>
-    </div>
-  );
+            <BrowserRouter>
+                <div>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/gallery" element={<GalleryPage />} />
+                        <Route path="/buildtool" element={<BuilderTool />} />
+                        <Route path="/info/:searchTerm" element={<InfoPage />} />
+                    </Routes>
+                </div>
+            </BrowserRouter>
+        </div>
+    );
 }
 
-export default HomePage;
+export default App;
