@@ -250,7 +250,7 @@ const BuilderTool = () => {
 
 
   //------------------Add items---------------------------
-  // Function to add a new fish to the selectedFish array, if it's not already added
+  // Function to add a new fish to the selectedFish array
   const addFishToSelection = (newFish) => {
     setSelectedFish(prevSelectedFish => {
       // Check if the fish is already in the array by looking for its id
@@ -265,12 +265,12 @@ const BuilderTool = () => {
     });
   };
 
-  // Adjusted handleFishSelection to avoid adding duplicates
+  
   const handleFishSelection = (fish) => {
     addFishToSelection(fish);
   };
 
-  // Repeat similar logic for plants and tanks
+ 
   const addPlantToSelection = (newPlant) => {
     setSelectedPlant(prevSelectedPlant => {
       const plantExists = prevSelectedPlant.some(plant => plant.id === newPlant.id);
@@ -299,7 +299,7 @@ const BuilderTool = () => {
     setSelectedFish(prevSelectedFish => prevSelectedFish.filter(fish => fish.id !== fishId));
   };
 
-  // Sample function that could be called when a user wants to remove a selected fish
+  
   const handleFishRemoval = (fishId) => {
     removeFishFromSelection(fishId);
   };
@@ -309,7 +309,7 @@ const BuilderTool = () => {
     setSelectedPlant(prevSelectedPlant => prevSelectedPlant.filter(plant => plant.id !== plantId));
   };
 
-  // Sample function that could be called when a user wants to remove a selected plant
+  
   const handlePlantRemoval = (plantId) => {
     removePlantFromSelection(plantId);
   };
