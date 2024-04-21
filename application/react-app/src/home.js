@@ -33,7 +33,7 @@ function HomePage() {
                 <nav>
                     <ul>
                         <li><a href="../html/About/about.html">About Us</a></li>
-                        <li><Link to="/builder">Builder</Link></li>
+                        <li><Link to="/buildertool">Builder</Link></li>
                         <li><Link to="/gallery">Gallery</Link></li>
                         <li><a href="#">Plant Profiles</a></li>
                         <li><a href="blog.html">Blog</a></li>

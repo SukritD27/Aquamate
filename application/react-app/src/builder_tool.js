@@ -23,7 +23,7 @@ function BuilderTool() {
         const fetchData = async () => {
             try {
                //const response = await fetch(`https://aquamate.me/search?search=${searchTerm}`);
-                const response = await fetch(`https://localhost:8080/search?search=${searchTerm}`)
+                const response = await fetch(`http://localhost:8080/search?search=${searchTerm}`)
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }

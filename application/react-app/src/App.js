@@ -39,7 +39,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/gallery" element={<GalleryPage />} />
-                        <Route path="/buildtool" element={<BuilderTool />} />
+                        <Route path="/buildertool" element={<BuilderTool />} />
                         <Route path="/info/:searchTerm" element={<InfoPage />} />
                     </Routes>
                 </div>
