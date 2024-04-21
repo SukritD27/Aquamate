@@ -7,8 +7,8 @@ function InfoPage() {
 
     useEffect(() => {
         // Assuming the fetch URL is correct. Adjust if you're using an ID or another method to fetch specific details.
-        //const url = `https://aquamate.me/search?search=${encodeURIComponent(searchTerm)}`;
-        const url = `http://localhost:8080/search?search=$P{encodeURIComponent(searchTerm)}`;
+        const url = `https://aquamate.me/search?search=${encodeURIComponent(searchTerm)}`;
+        //const url = `http://localhost:8080/search?search=$P{encodeURIComponent(searchTerm)}`;
         fetch(url)
             .then(response => {
                 if (!response.ok) {

@@ -7,8 +7,8 @@ function HomePage() {
     const [searchResults, setSearchResults] = useState([]);
     const navigate = useNavigate();
     const handleSearch = () => {
-    //const url = `https://aquamate.me/search?search=${encodeURIComponent(searchTerm)}`;
-        const url = `http://localhost:8080/search?search=${encodeURIComponent(searchTerm)}`; 
+    const url = `https://aquamate.me/search?search=${encodeURIComponent(searchTerm)}`;
+    //const url = `http://localhost:8080/search?search=${encodeURIComponent(searchTerm)}`;
         fetch(url)
             .then(response => {
                 if (!response.ok) {
