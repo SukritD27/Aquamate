@@ -19,12 +19,18 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 8080;
 pool();
+
+//Remove when running on server
+//Keep when running on local host
+/*
 const corsOptions = {
     origin: 'http://localhost:8080', // This allows only requests from this origin
-    
+
 };
 
 app.use(cors(corsOptions));
+ */
+//END cors options for server vs local
 
 
 app.use('/test', testRouter);

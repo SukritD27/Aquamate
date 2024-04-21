@@ -40,6 +40,7 @@ router.get('/', async function (req, res, next) {
         const searchResults = searchResultsFauna.concat(searchResultsFlora, searchResultsTank);
 
         //if(await collection.countDocuments({ $or : [{commonName: {$regex: search}}, {scientificName: {$regex: search}}] }) === 0){
+
         if (searchResults.length == 0) {
             console.log('search: ', search);
             console.log("No Docs found.");

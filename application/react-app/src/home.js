@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -7,8 +7,8 @@ function HomePage() {
     const [searchResults, setSearchResults] = useState([]);
     const navigate = useNavigate();
     const handleSearch = () => {
-    //const url = `https://aquamate.me/search?search=${encodeURIComponent(searchTerm)}`;
-        const url = `http://localhost:8080/search?search=${encodeURIComponent(searchTerm)}`; 
+    const url = `https://aquamate.me/search?search=${encodeURIComponent(searchTerm)}`;
+    //const url = `http://localhost:8080/search?search=${encodeURIComponent(searchTerm)}`;
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -24,7 +24,6 @@ function HomePage() {
             });
     };
     const handleResultClick = (searchTerm) => { navigate(`/info/${encodeURIComponent(searchTerm)}`); };
-
 
     return (
         <div>
@@ -76,12 +75,8 @@ function HomePage() {
                 <p>&copy; 2024 Aquarium Website. All rights reserved.</p>
             </footer>
         </div>
-    )
-        ;
+    );
 }
 
 
 export default HomePage;
-
-
-

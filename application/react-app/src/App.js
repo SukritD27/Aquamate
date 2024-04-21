@@ -10,11 +10,11 @@ import './builder_tool.css';
 import './gallery.css';
 
 function App() {
-    const [message, setMessage] = useState('loading');
+    const [message, setMessage] = useState('loading...');
 
     useEffect(() => {
-       // fetch('https://aquamate.me/test')
-        fetch(`http://localhost:8080/test`)
+        fetch('https://aquamate.me/test')
+        //fetch(`http://localhost:8080/test`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

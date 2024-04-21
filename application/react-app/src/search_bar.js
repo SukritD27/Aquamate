@@ -1,5 +1,7 @@
 // SearchBar.js
 import React from 'react';
+import BuilderTool from './builder_tool';
+import './builder_tool'
 
 const SearchBar = ({ searchTerm, setSearchTerm }) => {
   const handleSearchChange = (event) => {
