@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from './home.js';
+import GalleryPage from './gallery';
 import InfoPage from './InfoPage';
-import './css/home.css';
-import './css/header.css';
+import BuilderTool from './builder_tool';
+import './home.css';
+import './header.css';
+import './builder_tool.css';
+import './gallery.css';
 
 function App() {
-    const [message, setMessage] = useState('Loading...'); // More neutral initial message
+    const [message, setMessage] = useState('loading...');
 
     useEffect(() => {
-        fetch('http://localhost:8080/test')
+       // fetch('https://aquamate.me/test')
+        fetch(`http://localhost:8080/test`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -24,15 +29,22 @@ function App() {
     }, []);
 
     return (
-        <BrowserRouter>
+        <div>
             <div className="App">
                 <p>Backend: {message}</p>
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/info/:searchTerm" element={<InfoPage />} />
-                </Routes>
             </div>
-        </BrowserRouter>
+
+            <BrowserRouter>
+                <div>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/gallery" element={<GalleryPage />} />
+                        <Route path="/buildertool" element={<BuilderTool />} />
+                        <Route path="/info/:searchTerm" element={<InfoPage />} />
+                    </Routes>
+                </div>
+            </BrowserRouter>
+        </div>
     );
 }
 

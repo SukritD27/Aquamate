@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/builder_tool.css'; 
+import './builder_tool.css';
 
 const BuildSection = ({ selectedFish, handleFishRemoval, selectedPlant, handlePlantRemoval, selectedTank, handleTankRemoval }) => {
     return (

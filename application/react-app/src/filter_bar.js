@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/builder_tool.css'
+import './builder_tool.css'
 import SearchBar from './search_bar';
 
 const FilterBar = ({ filterTank, setFilterTank, filterPH, setFilterPH, filterTemp, setFilterTemp, searchTerm, setSearchTerm }) => {
