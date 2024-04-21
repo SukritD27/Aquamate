@@ -1,4 +1,4 @@
-  GNU nano 6.2                                                             InfoPage.js                                                                       import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 function InfoPage() {
@@ -7,7 +7,8 @@ function InfoPage() {
 
     useEffect(() => {
         // Assuming the fetch URL is correct. Adjust if you're using an ID or another method to fetch specific details.
-        const url = `https://aquamate.me/search?search=${encodeURIComponent(searchTerm)}`;
+        //const url = `https://aquamate.me/search?search=${encodeURIComponent(searchTerm)}`;
+        const url = `https://localhost:8080/search?search=$P{encodeURIComponent(searchTerm)}`;
         fetch(url)
             .then(response => {
                 if (!response.ok) {

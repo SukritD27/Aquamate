@@ -7,7 +7,8 @@ function GalleryPage() {
 
     useEffect(() => {
         // Assuming this URL is where your images data is fetched from
-        const url = 'https://aquamate.me/cards?search=';
+        //const url = 'https://aquamate.me/cards?search=';
+        const url = 'https://localhost:8080/cards?search=';
 
         fetch(url)
             .then(response => {

@@ -1,4 +1,4 @@
-  GNU nano 6.2                                                               cards.js                                                                        const express = require('express');
+const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 // const client = require('./config/database.js');

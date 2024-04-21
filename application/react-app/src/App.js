@@ -13,7 +13,8 @@ function App() {
     const [message, setMessage] = useState('loading');
 
     useEffect(() => {
-        fetch('https://aquamate.me/test')
+       // fetch('https://aquamate.me/test')
+        fetch(`https://livehost:8080/test`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
